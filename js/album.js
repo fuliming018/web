@@ -212,8 +212,13 @@ document.onmousemove = function (e) {
     if (window.event) e = window.event;
     mouse.x = e.clientX;
     mouse.y = e.clientY;
+
     return false;
+
 }
+
 /**
  * Created by apple on 2016/4/8.
  */
+
+

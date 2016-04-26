@@ -3,89 +3,110 @@
 <head>
     <meta charset="utf-8">
     <title>夏洛克</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.css">-->
     <link rel="stylesheet" href="css/cusNav.css">
-    <link rel="stylesheet" href="css/album.css">
+    <style>
+        .dynamicBackground {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
 
+        .pageTitle {
+            position: absolute;
+            z-index: 2;
+        }
+    </style>
 </head>
 <body>
 <!-- 导航代码部分begin -->
-    <div class="meny">
-        <h2>More Experiments</h2>
-        <ul>
-            <li><a href="#">Avgrund</a></li>
-            <li><a href="#">Radar</a></li>
-            <li><a href="#">forkit.js</a></li>
-            <li><a href="#">stroll.js</a></li>
-            <li><a href="#">zoom.js</a></li>
-            <li><a href="#">reveal.js</a></li>
-            <li><a href="#">Sinuous for iOS</a></li>
-            <li><a href="#">DOM Tree</a></li>
-            <li><a href="#">Holobox</a></li>
-            <li><a href="#">404</a></li>
-        </ul>
-    </div>
-    <div class="meny-arrow"></div>
-    <div class="contents">
-        <!--相册代码开始-->
-        <div id="screen"></div>
-        <div id="bankImages">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/1.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/2.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/3.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/4.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/5.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/6.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/7.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/8.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/9.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/10.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/11.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/12.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/13.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/14.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/1.jpg">
-            <img alt="懒人之家" src="http://demo.lanrenzhijia.com/2014/album1121/images/2.jpg">
-        </div>
+<div class="meny">
+    <h2>More Experiments</h2>
+    <ul>
+        <li><a href="#">Avgrund</a></li>
+        <li><a href="#">Radar</a></li>
+        <li><a href="#">forkit.js</a></li>
+        <li><a href="#">stroll.js</a></li>
+        <li><a href="#">zoom.js</a></li>
+        <li><a href="#">reveal.js</a></li>
+        <li><a href="#">Sinuous for iOS</a></li>
+        <li><a href="#">DOM Tree</a></li>
+        <li><a href="#">Holobox</a></li>
+        <li><a href="#">404</a></li>
+    </ul>
+</div>
+<div class="meny-arrow"></div>
+<div class="contents">
+    <!--标题-->
+    <iframe src="1_SparkR.htm" width="320px" height="240px" scrolling="no" frameborder="no" allowTransparency="true"
+            class="pageTitle"></iframe>
+
+    <!--动态背景-->
+    <iframe src="dynamicBackground.html" width="100%" height="100%" scrolling="no" frameborder="no"
+            class="dynamicBackground"></iframe>
+
+    <!--加载相册-->
+    <!--<iframe src="album.html" width="100%" height="100%" scrolling="no" frameborder="no"></iframe>-->
 
 
-        <!-- 相册代码结束 -->
-    </div>
+</div>
 <!--导航代码结束-->
 
 <!--bootstrap js部分开始-->
 <script src="js/jquery-1.11.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.js"></script>
+<!--<script src="bootstrap/js/bootstrap.js"></script>-->
 <!--bootstrap js部分结束-->
 
 <!--导航js部分开始-->
-<script src="js/meny.min.js"></script>
+<script src="js/meny.js"></script>
 <script>
     var meny = Meny.create({
+        // The element that will be animated in from off screen
         menuElement: document.querySelector('.meny'),
+
+        // The contents that gets pushed aside while Meny is active
         contentsElement: document.querySelector('.contents'),
-        position: Meny.getQuery().p || 'left',
+
+        // [optional] The alignment of the menu (top/right/bottom/left)
+        position: Meny.getQuery().p || 'left', 
+
+        // [optional] The height of the menu (when using top/bottom position)
         height: 200,
+
+        // [optional] The width of the menu (when using left/right position)
         width: 260,
+
+        // [optional] Distance from mouse (in pixels) when menu should open
         threshold: 40,
+
+        // [optional] Use mouse movement to automatically open/close
         mouse: true,
+
+        // [optional] Use touch swipe events to open/close
         touch: true
     });
+
     if (Meny.getQuery().u && Meny.getQuery().u.match(/^http/gi)) {
         var contents = document.querySelector('.contents');
         contents.style.padding = '0px';
         contents.innerHTML = '<div class="cover"></div><iframe src="' + Meny.getQuery().u + '" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
     }
 </script>
-<!-- 导航js部分end -->
+<!-- 导航js部分结束 -->
 
-<!--相册js部分开始-->
-<script src="js/album.js"></script>
 <script>
-    onresize = tv.resize;
-    tv.init();
+    window.onresize = function () {putTheTitleCenter();}
+
+    function putTheTitleCenter() {
+        //    标题居中
+        var pageTitlewidth = $('.pageTitle').width();
+        var bodyWidth = $('body').width();
+        $('.pageTitle').css('left', bodyWidth * 0.5 - pageTitlewidth / 2);
+    }
+
+    putTheTitleCenter();
 </script>
-<!--相册js部分结束-->
 
 </body>
 </html>
