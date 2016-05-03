@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>夏洛克</title>
-    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.css">-->
     <link rel="stylesheet" href="css/cusNav.css">
     <style>
         .dynamicBackground {
@@ -13,10 +12,34 @@
             z-index: 1;
         }
 
-        .pageTitle {
+        .headline {
             position: absolute;
             z-index: 2;
         }
+
+        .subTitle {
+            animation: mymove 3s infinite;
+            animation-direction: alternate;
+            position: absolute;
+            z-index: 2;
+            width: 50%;
+            top: 260px;
+            font-size: 22px;
+        }
+
+        @keyframes mymove {
+            from {
+                text-shadow: 2px 3px 2px #ccc;
+                color: white;
+                opacity: 1.0
+            }
+            to {
+                text-shadow: -1px 6px 3px #000;
+                color: black;
+                opacity: 0.4
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -38,13 +61,34 @@
 </div>
 <div class="meny-arrow"></div>
 <div class="contents">
-    <!--标题-->
+    <!--动画标题-->
     <iframe src="1_SparkR.htm" width="320px" height="240px" scrolling="no" frameborder="no" allowTransparency="true"
-            class="pageTitle"></iframe>
+            class="headline"></iframe>
 
     <!--动态背景-->
     <iframe src="dynamicBackground.html" width="100%" height="100%" scrolling="no" frameborder="no"
             class="dynamicBackground"></iframe>
+
+    <!--副标题-->
+    <div class="subTitle">
+        <font size="30" face="Old London">S</font><font face="Giddyup Std">herlock is a British-American crime drama
+        television series based on Sir Arthur Conan Doyle's Sherlock Holmes
+        detective stories. Created by Steven Moffat and Mark Gatiss, it stars Benedict Cumberbatch as Sherlock Holmes
+        and
+        Martin Freeman as Doctor John Watson. Ten episodes have been produced, with three-part series airing in 2010,
+        2012
+        and 2014, and a special episode airing on 1 January 2016. A fourth series has been commissioned, to begin
+        filming in
+        April 2016 for an intended 2017 release. The series is id="reflexion" set in the present day, while the one-off special partly
+        features a Victorian period fantasy resembling the original Holmes stories. Sherlock is a co-production between
+        the
+        BBC and WGBH Boston for its Masterpiece anthology series on PBS, with Sue Vertue and Elaine Cameron of Hartswood
+        Films serving as producers. The series is primarily filmed in Cardiff, Wales, with North Gower Street in London
+        used
+        for exterior shots of Holmes and Watson's 221B Baker Street residence.
+    </font>
+    </div>
+
 
     <!--加载相册-->
     <!--<iframe src="album.html" width="100%" height="100%" scrolling="no" frameborder="no"></iframe>-->
@@ -53,10 +97,7 @@
 </div>
 <!--导航代码结束-->
 
-<!--bootstrap js部分开始-->
 <script src="js/jquery-1.11.3.min.js"></script>
-<!--<script src="bootstrap/js/bootstrap.js"></script>-->
-<!--bootstrap js部分结束-->
 
 <!--导航js部分开始-->
 <script src="js/meny.js"></script>
@@ -69,7 +110,7 @@
         contentsElement: document.querySelector('.contents'),
 
         // [optional] The alignment of the menu (top/right/bottom/left)
-        position: Meny.getQuery().p || 'left', 
+        position: Meny.getQuery().p || 'left',
 
         // [optional] The height of the menu (when using top/bottom position)
         height: 200,
@@ -96,16 +137,21 @@
 <!-- 导航js部分结束 -->
 
 <script>
-    window.onresize = function () {putTheTitleCenter();}
-
-    function putTheTitleCenter() {
-        //    标题居中
-        var pageTitlewidth = $('.pageTitle').width();
-        var bodyWidth = $('body').width();
-        $('.pageTitle').css('left', bodyWidth * 0.5 - pageTitlewidth / 2);
+    window.onresize = function () {
+        putThisCenter('.headline');
+        putThisCenter('.subTitle');
     }
 
-    putTheTitleCenter();
+    function putThisCenter(Element) {
+        //    居中
+        var pageTitlewidth = $(Element).width();
+        var bodyWidth = $('body').width();
+        $(Element).css('left', bodyWidth * 0.5 - pageTitlewidth / 2);
+    }
+
+    putThisCenter('.headline');
+    putThisCenter('.subTitle');
+
 </script>
 
 </body>

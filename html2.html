@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<img src="images/back4.jpg" id="img1">
+
+<div id="div1"></div>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script>
+    var img = new Image(); //创建一个Image对象，实现图片的预下载
+    img.src = "images/back4.jpg";
+
+
+    var canvas1  = $("<canvas width=" + img.width + " height=" + img.height + "></canvas>");
+
+    alert(img.width)
+    var ctx = canvas1[0].getContext("2d");
+    img.onload = function () {
+        ctx.drawImage(img, 0, 0,img.width,img.height);
+    }
+
+    $('#div1').append(canvas1);
+
+</script>
+</body>
+</html>

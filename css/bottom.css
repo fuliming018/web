@@ -1,0 +1,50 @@
+@charset "utf-8";
+* {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+img {
+    border: 0px;
+}
+
+.container {
+    width: 50%;
+    height: 450px;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.container ul li {
+    width: 15%;
+    height: 405px;
+    position: relative;
+    overflow: hidden;
+    float: left;
+}
+
+.container ul li .imgTop img {
+    opacity: 0.4;
+}
+
+.container ul li .imgTop img.tm {
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
